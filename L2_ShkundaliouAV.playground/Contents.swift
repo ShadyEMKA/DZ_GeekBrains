@@ -40,12 +40,12 @@ var k = 0
 for element in increasingArray {
     switch element {
     case _ where (element % 2) == 0:
-        increasingArray.remove(at: k)
+        increasingArray.remove(at: increasingArray.firstIndex(of: element)!)
         break
     case _ where (element % 3) == 0:
-        increasingArray.remove(at: k)
+        increasingArray.remove(at: increasingArray.firstIndex(of: element)!)
     default:
-        k += 1
+        break
     }
 }
 print("Отредактированный массив:\n\(increasingArray)\n")
@@ -92,12 +92,10 @@ for i in 2...n { // создаём массив от 2 до n
 }
 
 func perebor (p : Int) -> [Int] { // функция замены кратных "p" чисел на "0"
-    var m = 0 // счётчик в цикле для изменения элемента в массиве
     for i in primeNumbers { // перебор элементов массива
         if (i % p == 0) && (i != p) { // условие, кратно и не равно "p"
-            primeNumbers[m] = 0 // замена элемента на "0"
+            primeNumbers[primeNumbers.firstIndex(of: i)!] = 0 // замена элемента на "0"
         }
-        m += 1 // прибавление счётчика
     }
     return primeNumbers // возвращение измененного массива.
 }
